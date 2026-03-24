@@ -9,11 +9,14 @@ class GameRunner
 private:
 	std::atomic<Direction> playerDirection;
 	Point player;
+	std::atomic<bool> isRunning;
 	void DrawBoard();
 public:
 	GameRunner();
 	void Tick();
 	void SetDirection(Direction d);
 	void Run();
+	void Quit();
+	bool IsRunning();
 };
 

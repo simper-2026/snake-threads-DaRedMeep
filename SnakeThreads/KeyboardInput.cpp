@@ -38,14 +38,19 @@ void KeyboardInput::CheckInput()
 		case 77:
 			game->SetDirection(Direction::RIGHT);
 			break;
+
+
+		case 'q':
+		case 'Q':
+			game->Quit();
+			break;
 		}
 	}
 }
 
 void KeyboardInput::Run()
 {
-	while (true)
-	{
+	while (game->IsRunning()) {
 		CheckInput();
 		this_thread::sleep_for(chrono::milliseconds(10));
 	}
