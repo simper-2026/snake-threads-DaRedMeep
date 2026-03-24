@@ -4,11 +4,6 @@
 
 using namespace std;
 
-void GameRunner::DrawBoard()
-{
-	
-}
-
 GameRunner::GameRunner()
 {
 	playerDirection = Direction::RIGHT;
@@ -38,8 +33,6 @@ void GameRunner::Tick()
 
 		break;
 	}
-
-	DrawBoard();
 }
 
 void GameRunner::Run()

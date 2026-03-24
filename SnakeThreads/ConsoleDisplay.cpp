@@ -30,7 +30,6 @@ void ConsoleDisplay::DrawBoard()
 		}
 		std::cout << endl;
 	}
-
 }
 
 ConsoleDisplay::ConsoleDisplay(GameRunner* g)
@@ -42,8 +41,6 @@ ConsoleDisplay::ConsoleDisplay(GameRunner* g)
 	GetConsoleCursorInfo(hConsole, &cursorInfo);
 	cursorInfo.bVisible = FALSE;
 	SetConsoleCursorInfo(hConsole, &cursorInfo);
-
-	
 }
 
 void ConsoleDisplay::Run()
