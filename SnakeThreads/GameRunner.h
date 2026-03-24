@@ -9,7 +9,6 @@ class GameRunner
 {
 private:
 	std::atomic<Direction> playerDirection;
-	Point player;
 	std::atomic<bool> isRunning;
 	GameState state;
 public:
@@ -19,6 +18,6 @@ public:
 	void Run();
 	void Quit();
 	bool IsRunning();
-	Point GetBuffer();
+	GameState GetBuffer();
 };
 
