@@ -4,6 +4,7 @@ class ConsoleDisplay
 {
 private:
 	GameRunner* game;
+	void DrawBoard();
 
 public:
 	ConsoleDisplay(GameRunner* g);
