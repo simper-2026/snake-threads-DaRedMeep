@@ -52,6 +52,7 @@ void KeyboardInput::Run()
 {
 	while (game->IsRunning()) {
 		CheckInput();
+
 		this_thread::sleep_for(chrono::milliseconds(10));
 	}
 }
