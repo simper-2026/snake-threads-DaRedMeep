@@ -1,6 +1,8 @@
 #include "GameRunner.h"
 #include <iostream>
 #include <windows.h>
+#include <chrono>
+#include <thread>
 
 using namespace std;
 
@@ -61,10 +63,17 @@ void GameRunner::Tick()
 	default:
 
 		break;
-			
 	}
 
 	DrawBoard();
+}
+
+void GameRunner::Run()
+{
+	while (true) {
+		Tick();
+		this_thread::sleep_for(chrono::milliseconds(200));
+	}
 }
 
 
