@@ -55,4 +55,3 @@ void KeyboardInput::Run()
 		this_thread::sleep_for(chrono::milliseconds(10));
 	}
 }
-

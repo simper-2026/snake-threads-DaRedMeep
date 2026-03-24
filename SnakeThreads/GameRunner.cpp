@@ -71,7 +71,7 @@ void GameRunner::Tick()
 
 void GameRunner::Run()
 {
-	while (true) {
+	while (isRunning) {
 		Tick();
 		this_thread::sleep_for(chrono::milliseconds(200));
 	}
