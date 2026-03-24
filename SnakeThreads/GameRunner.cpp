@@ -42,8 +42,28 @@ GameRunner::GameRunner()
 
 void GameRunner::Tick()
 {
-	
-	cout << playerDirection << endl;
+
+	switch (playerDirection)
+	{
+	case Direction::UP:
+		player.X--;
+		break;
+	case Direction::DOWN:
+		player.X++;
+		break;
+	case Direction::LEFT:
+		player.Y--;
+		break;
+	case Direction::RIGHT:
+		player.Y++;
+		break;
+	case Direction::NONE:
+	default:
+
+		break;
+			
+	}
+
 	DrawBoard();
 }
 
