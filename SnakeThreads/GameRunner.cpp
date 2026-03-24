@@ -7,7 +7,6 @@ using namespace std;
 GameRunner::GameRunner()
 {
 	playerDirection = Direction::RIGHT;
-	player = { 10, 0 };
 	isRunning = true;
 }
 
@@ -17,16 +16,16 @@ void GameRunner::Tick()
 	switch (playerDirection)
 	{
 	case Direction::UP:
-		player.X--;
+		state.player.X--;
 		break;
 	case Direction::DOWN:
-		player.X++;
+		state.player.X++;
 		break;
 	case Direction::LEFT:
-		player.Y--;
+		state.player.Y--;
 		break;
 	case Direction::RIGHT:
-		player.Y++;
+		state.player.Y++;
 		break;
 	case Direction::NONE:
 	default:
@@ -55,7 +54,7 @@ bool GameRunner::IsRunning()
 
 Point GameRunner::GetBuffer()
 {
-	return player;
+	return state.player;
 }
 
 
