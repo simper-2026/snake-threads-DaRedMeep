@@ -11,13 +11,10 @@ KeyboardInput::KeyboardInput(GameRunner* g)
 	game = g;
 }
 
-void KeyboardInput::CheckInput()
-{
-	if (_kbhit())
-	{
+void KeyboardInput::CheckInput() {
+	if (_kbhit()) {
 		int ch = _getch();
-		switch (ch)
-		{
+		switch (ch) {
 		case 'w':
 		case 'W':
 		case 72:
@@ -38,8 +35,6 @@ void KeyboardInput::CheckInput()
 		case 77:
 			game->SetDirection(Direction::RIGHT);
 			break;
-
-
 		case 'q':
 		case 'Q':
 			game->Quit();
@@ -48,8 +43,7 @@ void KeyboardInput::CheckInput()
 	}
 }
 
-void KeyboardInput::Run()
-{
+void KeyboardInput::Run() {
 	while (game->IsRunning()) {
 		CheckInput();
 

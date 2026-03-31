@@ -6,16 +6,15 @@
 
 using namespace std;
 
-void ConsoleDisplay::DrawBoard()
-{
+void ConsoleDisplay::DrawBoard() {
 	auto state = game->GetBuffer();
 
 	COORD coord = { 0, 0 };
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
 
-	for (int x = -1; x < state.GetBoardSize(); x++) {
-		for (int y = -1; y < state.GetBoardSize(); y++) {
-			if (x == state.player.X && y == state.player.Y) {
+	for (int x = -1; x < state->GetBoardSize(); x++) {
+		for (int y = -1; y < state->GetBoardSize(); y++) {
+			if (x == state->player.X && y == state->player.Y) {
 				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
 				std::cout << "O";
 			}
@@ -24,7 +23,6 @@ void ConsoleDisplay::DrawBoard()
 				std::cout << "#";
 			}
 			else {
-
 				std::cout << " ";
 			}
 		}
@@ -32,8 +30,7 @@ void ConsoleDisplay::DrawBoard()
 	}
 }
 
-ConsoleDisplay::ConsoleDisplay(GameRunner* g)
-{
+ConsoleDisplay::ConsoleDisplay(GameRunner* g) {
 	game = g;
 
 	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -43,8 +40,7 @@ ConsoleDisplay::ConsoleDisplay(GameRunner* g)
 	SetConsoleCursorInfo(hConsole, &cursorInfo);
 }
 
-void ConsoleDisplay::Run()
-{
+void ConsoleDisplay::Run() {
 	while (game->IsRunning()) {
 		DrawBoard();
 

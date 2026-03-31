@@ -4,61 +4,67 @@
 
 using namespace std;
 
-GameRunner::GameRunner()
-{
+GameRunner::GameRunner() {
 	playerDirection = Direction::RIGHT;
 	isRunning = true;
+
+	buffer[0] = GameState{};
+	buffer[1] = GameState{};
+
+	current = &buffer[0];
+	next = &buffer[1];
 }
 
-void GameRunner::Tick()
-{
+void GameRunner::Tick() {
+	*next = *current;
+	// delete next;
+	// next = new GameState(*current);
 
-	switch (playerDirection)
-	{
+	switch (playerDirection) {
 	case Direction::UP:
-		state.player.X--;
+		next->player.X--;
 		break;
 	case Direction::DOWN:
-		state.player.X++;
+		next->player.X++;
 		break;
 	case Direction::LEFT:
-		state.player.Y--;
+		next->player.Y--;
 		break;
 	case Direction::RIGHT:
-		state.player.Y++;
+		next->player.Y++;
 		break;
 	case Direction::NONE:
 	default:
-
 		break;
 	}
+	SwapBuffer();
 }
 
-void GameRunner::Run()
-{
+void GameRunner::SwapBuffer() {
+	GameState* temp = current;
+	current = next;
+	next = temp;
+}
+
+void GameRunner::Run() {
 	while (isRunning) {
 		Tick();
 		this_thread::sleep_for(chrono::milliseconds(200));
 	}
 }
 
-void GameRunner::Quit()
-{
+void GameRunner::Quit() {
 	isRunning = false;
 }
 
-bool GameRunner::IsRunning()
-{
+bool GameRunner::IsRunning() {
 	return isRunning;
 }
 
-GameState GameRunner::GetBuffer()
-{
-	return state;
+GameState* GameRunner::GetBuffer() {
+	return current;
 }
 
-
-void GameRunner::SetDirection(Direction d)
-{
+void GameRunner::SetDirection(Direction d) {
 	playerDirection = d;
 }
